@@ -8,10 +8,8 @@ The `fluvio cloud cluster` family of commands is used to create, delete, and tro
 
 %copy first-line%
 ```bash
-$  fluvio cloud cluster -h
-```
+$ fluvio cloud cluster -h
 
-```
 fluvio-cloud-cluster 
 View Fluvio Cluster information
 
@@ -36,10 +34,8 @@ This command is used to provision a new cluster.
 
 %copy first-line%
 ```bash
-$  fluvio cloud cluster create -h
-```
+$ fluvio cloud cluster create -h
 
-```
 Create a new Fluvio cluster
 
 USAGE:
@@ -56,10 +52,8 @@ Command to show the fluvio clusters in Cloud associated with current user.
 
 %copy first-line%
 ```bash
-$  fluvio cloud cluster list -h
-```
+$ fluvio cloud cluster list -h
 
-```
 List all Fluvio clusters
 
 USAGE:
@@ -88,10 +82,8 @@ This command deletes current cluster of current user.
 
 %copy first-line%
 ```bash
-$  fluvio cloud cluster delete -h
-```
+$ fluvio cloud cluster delete -h
 
-```
 USAGE:
     fluvio-cloud cluster delete <email>
 
