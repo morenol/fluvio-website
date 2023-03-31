@@ -1,8 +1,6 @@
 ```
 Run a new Streaming Processing Unit (SPU)
-
 Usage: fluvio-run spu [OPTIONS]
-
 Options:
   -i, --id <integer>
           SPU unique identifier
@@ -35,5 +33,5 @@ Options:
       --bind-non-tls-public <BIND_NON_TLS_PUBLIC>
           TLS: address of non tls public service, required
   -h, --help
-          Print help information
+          Print help
 ```

@@ -1,11 +1,8 @@
 ```
 Download a SmartModule from the hub
-
 Usage: fluvio hub download [OPTIONS] <name>
-
 Arguments:
   <name>  SmartModule name: e.g. infinyon/jolt@v0.0.1
-
 Options:
   -c, --cluster <host:port>        Address of cluster
       --tls                        Enable TLS
@@ -17,5 +14,5 @@ Options:
   -P, --profile <profile>          
       --local                      just download package to local filesystem
       --ipkg                       given local package file, download to cluster
-  -h, --help                       Print help information (use `--help` for more detail)
+  -h, --help                       Print help (see more with '--help')
 ```

@@ -10,7 +10,7 @@ We'll use 2 connectors:
 * [Outbound SQL connector]({{<ref "/connectors/outbound/sql.md" >}})
     * There will be an example of combining multiple SmartModules, known as **SmartModule chaining**
 
-The Outbound connector will be using a PostgreSQL database. It will listen to the topic for new records and insert them into a table.
+The Outbound connector will be using a [PostgreSQL](https://www.postgresql.org/) database. It will listen to the topic for new records and insert them into a table.
 
 You can use your own PostgreSQL instance, if it can be reached over the internet. But you can still follow along by creating a PostgreSQL database at a hosting service, such as [ElephantSQL](https://www.elephantsql.com/).
 

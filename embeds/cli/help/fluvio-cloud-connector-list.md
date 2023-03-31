@@ -1,10 +1,8 @@
 ```
 fluvio-cloud-connector-list 
 List all Connectors
-
 USAGE:
-    fluvio-cloud connector list
-
+    fluvio-cloud connector list [OPTIONS]
 OPTIONS:
     -h, --help    Print help information
 ```

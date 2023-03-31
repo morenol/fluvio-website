@@ -1,11 +1,8 @@
 ```
 Read messages from a topic/partition
-
 Usage: fluvio consume [OPTIONS] <topic>
-
 Arguments:
   <topic>  Topic name
-
 Options:
   -p, --partition <integer>
           Partition id [default: 0]
@@ -38,9 +35,9 @@ Options:
   -O, --output <type>
           Output [possible values: dynamic, text, binary, json, raw, table, full-table]
       --smartmodule <SMARTMODULE>
-          Name of the smart module
+          Name of the smartmodule
       --smartmodule-path <SMARTMODULE_PATH>
-          Path to the stmart module
+          Path to the smart module
       --aggregate-initial <AGGREGATE_INITIAL>
           (Optional) Path to a file to use as an initial accumulator value with --aggregate
   -e, --params <PARAMS>
@@ -52,5 +49,5 @@ Options:
   -t, --transform <TRANSFORM>
           (Optional) Transformation specification as JSON formatted string. E.g. fluvio consume topic-name --transform='{"uses":"infinyon/jolt@0.1.0","with":{"spec":"[{\"operation\":\"default\",\"spec\":{\"source\":\"test\"}}]"}}'
   -h, --help
-          Print help information (use `--help` for more detail)
+          Print help (see more with '--help')
 ```

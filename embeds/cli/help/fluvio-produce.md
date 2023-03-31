@@ -1,11 +1,8 @@
 ```
 Write messages to a topic/partition
-
 Usage: fluvio produce [OPTIONS] <topic>
-
 Arguments:
   <topic>  The name of the Topic to produce to
-
 Options:
   -v, --verbose
           Print progress output when sending records
@@ -28,5 +25,5 @@ Options:
       --delivery-semantic <DELIVERY_SEMANTIC>
           Delivery guarantees that producer must respect. Supported values: at_most_once (AtMostOnce) - send records without waiting from response, at_least_once (AtLeastOnce) - send records and retry if error occurred [default: at-least-once]
   -h, --help
-          Print help information
+          Print help
 ```

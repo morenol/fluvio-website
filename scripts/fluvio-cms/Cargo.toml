@@ -1,0 +1,16 @@
+[package]
+name = "fluvio-cms"
+version = "0.0.0"
+edition = "2021"
+description = "A content management system CLI for fluvio.io"
+publish = false
+
+[dependencies]
+anyhow = "1.0.69"
+clap = { version = "4.1.8", features = ["derive"] }
+convert_case = "0.6.0"
+lazy_static = "1.4.0"
+strum = { version = "0.24.1", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+xshell = "0.2.3"
