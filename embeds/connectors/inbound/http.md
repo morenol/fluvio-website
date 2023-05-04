@@ -1,11 +1,8 @@
-# Fluvio HTTP Connector
-Official Infinyon HTTP connector
+# Fluvio HTTP Inbound Connector
 
-## Source Connector
-Sources HTTP Responses given input HTTP request configuration options and `interval` x.
+Read HTTP Responses given input HTTP request configuration options and `interval` x and produces them to Fluvio topics.
 
 Supports HTTP/1.0, HTTP/1.1, HTTP/2.0 protocols.
-
 
 See [docs](https://www.fluvio.io/connectors/inbound/http/) here.
 Tutorial for [HTTP to SQL Pipeline](https://www.fluvio.io/docs/tutorials/data-pipeline/).
@@ -37,17 +34,20 @@ This is an example of simple connector config file:
 
 ```yaml
 # config-example.yaml
+apiVersion: 0.1.0
 meta:
-  version: 0.1.0
+  version: 0.2.0
   name: cat-facts
   type: http-source
   topic: cat-facts
   create-topic: true
+  secrets:
+    - name: AUTHORIZATION_TOKEN
 http:
   endpoint: "https://catfact.ninja/fact"
   interval: 10s  
   headers:
-    - "Authorization: token MySecretToken"
+    - "Authorization: token ${{ secrets.AUTHORIZATION_TOKEN }}"
     - "Cache-Control: no-cache"
 ```
 
@@ -58,6 +58,31 @@ The produced record in Fluvio topic will be:
   "length": 158
 }
 ```
+### Secrets
+
+Fluvio HTTP Source Connector supports Secrets in the `endpoint` and in the `headers` parameters:
+
+```yaml
+# config-example.yaml
+apiVersion: 0.1.0
+meta:
+  version: 0.2.0
+  name: cat-facts
+  type: http-source
+  topic: cat-facts
+  create-topic: true
+  secrets:
+    - name: MY_SECRET_URL
+    - name: MY_AUTHORIZATION_HEADER
+http:
+ endpoint: 
+   secret:
+     name: MY_SECRET_URL
+ headers: 
+  - "Authorization: ${{ secrets.MY_AUTHORIZATION_HEADER }}
+ interval: 10s
+```
+
 
 ### Transformations
 Fluvio HTTP Source Connector supports [Transformations](https://www.fluvio.io/docs/concepts/transformations-chain/). Records can be modified before sending to Fluvio topic.
@@ -65,8 +90,9 @@ Fluvio HTTP Source Connector supports [Transformations](https://www.fluvio.io/do
 The previous example can be extended to add extra transformations to outgoing records:
 ```yaml
 # config-example.yaml
+apiVersion: 0.1.0
 meta:
-  version: 0.1.0
+  version: 0.2.0
   name: cat-facts
   type: http-source
   topic: cat-facts

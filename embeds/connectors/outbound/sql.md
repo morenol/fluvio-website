@@ -38,16 +38,39 @@ in the config. If a SmartModule requires configuration, it is passed via `with` 
 
 ### Basic example:
 ```yaml
+apiVersion: 0.1.0
 meta:
-  version: 0.1.0
+  version: 0.2.0
   name: my-sql-connector
   type: sql-sink
   topic: sql-topic
   create-topic: true
+  secrets:
+    - name: DB_USERNAME
+    - name: DB_PASSWORD
+    - name: DB_HOST
+    - name: DB_PORT
+    - name: DB_NAME
 sql:
-  url: 'postgresql://USERNAME:PASSWORD@HOST:PORT/DB_NAME'
+  url: 'postgresql://${{ secrets.DB_USERNAME }}:${{ secrets.DB_PASSWORD }}@${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }}'
 ```
 
+### Secrets
+
+The connector can use secrets in order to hide sensitive information.
+
+```yaml
+apiVersion: 0.1.0
+meta:
+  version: 0.1.1
+  name: my-sql-connector
+  type: sql-sink
+  topic: sql-topic
+  secrets:
+    - name: DATABASE_URL
+sql:
+  url: ${{ secrets.DATABASE_URL }}
+```
 ## Usage Example
 Let's look at the example of the connector with one transformation named [infinyon/json-sql](https://github.com/infinyon/fluvio-connectors/blob/main/smartmodules/json-sql/README.md). The transformation takes
 records in JSON format and creates SQL insert operation to `topic_message` table. The value from `device.device_id`
@@ -70,14 +93,17 @@ CREATE TABLE topic_message (device_id int, record json);
 Connector configuration file:
 ```yaml
 # connector-config.yaml
+apiVersion: 0.1.0
 meta:
-  version: latest
+  version: 0.2.0
   name: json-sql-connector
   type: sql-sink
   topic: sql-topic
   create-topic: true
+  secrets:
+    - name: DATABASE_URL
 sql:
-  url: 'postgresql://USERNAME:PASSWORD@HOST:PORT/DB_NAME'
+  url: ${{ secrets.DATABASE_URL }}
 transforms:
   - uses: infinyon/json-sql
     with:
